@@ -1,17 +1,13 @@
 #!/bin/bash
 
-# no multithreading
-g++ matrix_inversion.cpp -o matrix_inversion
+# no optimizations
+g++ matrix_inversion.cpp -o matrix_inversion -std=c++14
 chmod +x matrix_inversion
 
-# multithreaded
-g++ matrix_inversion.cpp -o matrix_inversion_multithread -march=native
-chmod +x matrix_inversion_multithread
-
 # O3 optimization
-g++ matrix_inversion.cpp -o matrix_inversion_O3 -march=native -O3
+g++ matrix_inversion.cpp -o matrix_inversion_O3 -std=c++14 -O3
 chmod +x matrix_inversion_O3
 
 # Ofast optimization
-g++ matrix_inversion.cpp -o matrix_inversion_Ofast -march=native -Ofast
+g++ matrix_inversion.cpp -o matrix_inversion_Ofast -std=c++14 -Ofast
 chmod +x matrix_inversion_Ofast

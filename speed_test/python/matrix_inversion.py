@@ -4,6 +4,10 @@ import numpy as np
 import timeit
 import platform
 
+'''
+Runs matrix inversions by defining them as an in-script function (main)
+'''
+
 def main():
     mat_size = 5000 # matrix size
     num_experiments = 10 # number of experiments

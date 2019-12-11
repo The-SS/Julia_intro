@@ -1,3 +1,4 @@
+% Script that runs nested for loops
 outerloop = 10000; % outer loop size
 innerloop = 10000; % inner loop size
 num_experiments = 10; % number of experiments

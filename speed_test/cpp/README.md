@@ -1,7 +1,7 @@
 # Running these scripts
 These scripts will compile and run using your g++ compiler.
 
-The scripts were tested with g++ 7.4.0 and Eigen 3.3.7 (Eigen folder placed in `/usr/local/include/.` as described [here](https://eigen.tuxfamily.org/dox/GettingStarted.html)) on Ubuntu 18.04.
+The scripts were tested with g++ 7.4.0 (and c++14 standard) and Eigen 3.3.7 (Eigen folder placed in `/usr/local/include/.` as described [here](https://eigen.tuxfamily.org/dox/GettingStarted.html)) on Ubuntu 18.04.
 
 ### Compile
 To compile a script, navigate to this folder (`cpp`) run:

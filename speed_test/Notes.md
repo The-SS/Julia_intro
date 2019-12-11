@@ -1,0 +1,57 @@
+These scripts were tested on a Dell Precision 7520 with an Intel Xeon E3-1535M v6 CPU with 8 cores at 3.10GHz and 32GB RAM
+
+Notes:
+- the c++ matrix inversion runs on a single thread, the multithreading runs it on two threads. Meanwhile the python numpy inv function palatalizes over 4 cores (8 threads)
+
+Results:
+- Nested For Loops (loop1: 10000, loop2: 10000, repeat: 10, single thread):
+  - cpp:
+    - No optimizations:
+      - 0.224628 sec (avrg), 2.24628 sec (total)
+    - O3 optimization:
+      - 1 <--> 1.8 e-6 sec (avrg), 1 <--> 1.8 e-5 sec (total)
+    - Ofast optimization:
+      - 1.3 <--> 2.2 e-6 (avrg), 1.3 <--> 2.2 e-5 (total)
+    - O3 and Ofast varied considerably between different runs but they were always under 1e-4 second.
+  - julia:
+    - script-like:
+      - 5.657 sec (avrg), 56.57 sec (total)
+    - as a function:
+      - 3.38e-8 sec (avrg), 3.38e-7 sec (total)
+  - matlab:
+    - script-like:
+      - 0.10565 sec (avrg), 1.0565 sec (total)
+    - as a function:
+      - 0.10654 sec (avrg), 1.0654 sec (total)
+  - python:
+    - script-like (no functions):
+      - 6.1599 sec (avrg), 61.599 sec (total)
+    - in-script function:
+      - 3.2511 sec (avrg), 32.511 sec (total)
+    - as a function:
+      - 3.473 sec (avrg), 34.77 sec (total)
+- Matrix Inverse (5000x5000 matrix, repeat: 10):
+  - cpp (eigen inv, single threaded):
+    - No optimizations:
+      - - sec (avrg), - sec (total)
+    - O3 optimization:
+      - 24.2667 sec (avrg), 242.667 sec (total)
+    - Ofast optimization:
+      - 25.1397 (avrg), 251.397 (total)
+  - julia (native inv, 8 threads):
+    - script-like:
+      - 2.519 sec (avrg), 25.197 sec (total)
+    - as a function:
+      - 2.4803 sec (avrg), 24.803 sec (total)
+  - matlab (native inv, 4 threads):
+    - script-like:
+      - 1.8 sec (avrg), 17.9997 sec (total)
+    - as a function:
+      - 1.7946 sec (avrg), 17.9464 sec (total)
+  - python (numpy inv, 4 threads):
+    - script-like (no functions):
+      - 2.099 sec (avrg), 20.9914 sec (total)
+    - in-script function:
+      - 2.147 sec (avrg), 21.4767 sec (total)
+    - as a function:
+      - 2.0989 sec (avrg), 20.989 sec (total)
